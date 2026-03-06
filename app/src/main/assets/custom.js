@@ -21,12 +21,13 @@ window.addEventListener("DOMContentLoaded",()=>{const t=document.createElement("
     nav.style.right = '0';
     nav.style.zIndex = '9999';
     nav.style.display = 'flex';
-    nav.style.alignItems = 'center';
-    nav.style.gap = '12px';
+	nav.style.alignItems = 'center';
+	nav.style.justifyContent = 'center';   // 新增：整条菜单水平居中
+	nav.style.gap = '14px';
     nav.style.padding = '8px 16px';
     nav.style.background = '#222';
     nav.style.color = '#fff';
-    nav.style.fontSize = '14px';
+    nav.style.fontSize = '16px';
     nav.style.boxShadow = '0 2px 8px rgba(0,0,0,.2)';
 
     // 为每个菜单项创建一个 <button>
@@ -42,6 +43,7 @@ window.addEventListener("DOMContentLoaded",()=>{const t=document.createElement("
       btn.style.cursor = 'pointer';
       btn.style.padding = '6px 10px';
       btn.style.borderRadius = '4px';
+	  btn.style.textAlign = 'center';
 
       btn.addEventListener('mouseenter', function () {
         btn.style.background = 'rgba(255,255,255,.15)';
@@ -63,20 +65,6 @@ window.addEventListener("DOMContentLoaded",()=>{const t=document.createElement("
       });
 
       nav.appendChild(btn);
-    });
-
-    // 插入到 body 的最前面
-    document.body.insertBefore(nav, document.body.firstChild);
-
-    // 给 body 顶部留出空间，避免内容被导航挡住
-    // （等 nav 实际渲染完再取高度）
-    requestAnimationFrame(function () {
-      var h = nav.offsetHeight || 40;
-      var currentPaddingTop = parseInt(
-        window.getComputedStyle(document.body).paddingTop || '0',
-        10
-      );
-      document.body.style.paddingTop = (currentPaddingTop + h) + 'px';
     });
   }
 
